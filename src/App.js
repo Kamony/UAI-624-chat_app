@@ -1,25 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Rooms from "./Rooms";
+import MessageRoom from "./MessageRoom";
+import Login from "./Login";
 
 class App extends Component {
+
+  state = {
+    authenticated: false,
+    room: 1,
+    selected: false
+  };
+
+  login = () => {
+    this.setState({
+        authenticated: true,
+    })
+  };
+
+  chooseRoom = (id) => {
+    console.log(id);
+      this.setState({
+        room: id,
+        selected: true,
+    })
+  };
+
   render() {
+    const {authenticated, room, selected} = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className={"container"}>
+          <div className={"login"}>{!authenticated && <Login onLogin={this.login}/>}</div>
+
+          {authenticated && <div className={"roomsContainer"}>
+              <Rooms selected={room} chooseRoom={this.chooseRoom}/>
+          </div>}
+
+          {authenticated && <div className={"messageContainer"}>
+              <div className={"messageCanvas"}>
+                  <MessageRoom id={room} enabled={selected}/>
+              </div>
+          </div>}
+
       </div>
     );
   }

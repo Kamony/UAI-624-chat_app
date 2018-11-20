@@ -1,14 +1,239 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+html body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    max-height: 100%;
+    background: #2B3E50;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+
+
+.header {
+    margin-top: 5%;
+}
+
+.container {
+    display: flex;
+    height: 95vh;
+    flex: 1;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.login {
+    margin: auto
+}
+
+.card {
+    border: 2px solid #aaaaaa;
+    border-radius: 15px;
+    margin: auto;
+    display: flex;
+    flex: 1 100%;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card-header {
+    font-size: 3rem;
+    text-align: center;
+    flex: 2;
+    padding: 10px;
+    background: #4E5D6C;
+    color: #FFFFFF;
+}
+
+.card-body {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    flex-grow: 2;
+    padding: 15px;
+}
+
+.login {
+    display: flex;
+}
+
+.input {
+    padding: 15px;
+    flex-grow: 3;
+    background: #FFFFFF;
+    border-top: 1px solid #aaaaaa;
+}
+
+.button {
+    border-top: 1px solid #FFFFFF;
+    border-top: 1px solid #48A648;
+    background: #48A648;
+    color: #FFFFFF;
+    width: 15%;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.button-text {
+    margin: auto;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.roomsContainer {
+    width: 15%;
+    flex-direction: column;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+}
+
+.messageContainer {
+    width: 80%;
+    height: 98vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.messageCanvas {
+    width: 95%;
+    height: 98%;
+    background: ghostwhite;
+    /*border-radius: 10px;*/
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.messageCanvas::-webkit-scrollbar {
+    width: 0.5em;
+    height: 1em;
+}
+
+.messageCanvas::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.messageCanvas::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+.room {
+    border: 2px solid lightslategray;
+    border-radius: 50px 20px;
+    margin-left: 10px;
+    text-align: center;
+    margin-top: 15px;
+
+    font-size: 1rem;
+    padding: 15px;
+    color: #FFFFFF;
+}
+
+.room:hover {
+    background-color: lightslategray;
+    box-shadow: 3px 3px 1px rgba(57, 120, 163, 0.73);
+    cursor: pointer;
+}
+
+.messages {
+    display: flex;
+    /*flex-direction: column;*/
+    flex-direction: column-reverse;
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+.message {
+    width: fit-content;
+}
+
+.ownMessage {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    flex-direction: column;
+    margin-right: 4%;
+}
+
+.username {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2B3E50;
+}
+
+.fetch-more-btn{
+    justify-self: center;
+    text-decoration: underline;
+    color: steelblue;
+}
+
+.own-m-header{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: baseline;
+    margin-right: 5px;
+}
+
+.m-header{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5px;
+    align-items: baseline;
+}
+
+.timestamp {
+    color: #aaaaaa;
+    font-size: 0.8rem;
+    padding: 0 5px;
+    /*vertical-align: text-bottom;*/
+    /*background-color: #48A648;*/
+}
+.message > .text {
+    width: fit-content;
+    min-width: 75px;
+    font-size: medium;
+    color: rgba(0, 0, 0, 0.75);
+    border-radius: 0px 30px 30px 0px;
+    border: 1px solid rgba(57, 120, 163, 1);
+    background-color: rgba(57, 120, 163, 0.5);
+    padding: 10px;
+    max-width: 90%;
+}
+
+.ownMessage > .text {
+    font-size: medium;
+    color: rgba(0, 0, 0, 0.75);
+    width: fit-content;
+    min-width: 75px;
+    padding: 10px;
+    border: 1px solid #48A648;
+    border-radius: 30px 0px 0px 30px;
+    background-color: rgba(72, 166, 72, 0.5);
+    text-align: left;
+    max-width: 90%;
+}
+
+
+.selected-room {
+    background-color: lightslategray;
+    cursor: pointer;
+
+    border: 2px solid lightslategray;
+    border-radius: 50px 20px;
+    margin-left: 10px;
+    text-align: center;
+    margin-top: 15px;
+
+    font-size: 1rem;
+    padding: 15px;
+    color: #FFFFFF;
 }
